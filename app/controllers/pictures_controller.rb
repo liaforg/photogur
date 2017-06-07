@@ -9,12 +9,12 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @pictures = Picture.new
+    @picture = Picture.new
   end
 
   def create
-    @pictures = Picture.new(picture_params)
-      if @pictures.save
+    @picture = Picture.new(picture_params)
+      if @picture.save
         redirect_to "/pictures"
       else
         render :new
@@ -30,13 +30,18 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @pictures = Picture.find(params[:id])
-    if @pictures.update_attributes(picture_params)
-      redirect_to "/pictures/#{@pictures.id}"
+    @picture = Picture.find(params[:id])
+    if @picture.update_attributes(picture_params)
+      redirect_to "/pictures/#{@picture.id}"
     else
       render :edit
     end
   end
 
+  def destroy
+   @picture = Picture.find(params[:id])
+   @picture.destroy
+   redirect_to "/pictures"
+ end
 
 end
