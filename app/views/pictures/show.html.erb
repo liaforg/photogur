@@ -1,4 +1,4 @@
-<%= link_to("Back to Pictures", "/pictures") %>
+<%= link_to("Back to Pictures", "/pictures") %> | <%= link_to("Edit", "/pictures/#{@pictures.id}/edit") %>
 
 <p><%= @pictures.title %>, <%= @pictures.artist %></p>
 <%= image_tag(@pictures.url) %>

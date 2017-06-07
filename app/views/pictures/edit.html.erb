@@ -1,8 +1,10 @@
-<h1> Add a picture</h1>
+<h1>Edit Picture</h1>
 
-<%= link_to("Back to Pictures", "/pictures") %>
+<p>
+  <%= link_to("Back", "/pictures/#{@picture.id}") %>
+</p>
 
-<%= form_for(@pictures) do |f| %>
+<%= form_for(@picture, url: "/pictures/#{@picture.id}") do |f| %>
   <p>
     <%= f.label :artist %> <br>
     <%= f.text_field :artist %>
