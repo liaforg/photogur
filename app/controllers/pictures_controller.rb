@@ -13,7 +13,16 @@ class PicturesController < ApplicationController
   end
 
   def create
-    render text: "Received POST request to '/pictures' with the data URL: #{params}"
-  end
+    @pictures = Picture.new(picture_params)
+      if @pictures.save
+        redirect_to "/pictures"
+      else
+        render :new
+      end
+    end
 
+  def picture_params
+    {title: params[:picture][:title], artist: params[:picture][:artist], url: params[:picture][:url]}
+  end
+  
 end
